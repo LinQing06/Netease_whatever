@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:networkSecurityConfig="@xml/network_security_config"
+    android:background="@drawable/login_teo_picture"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        >
+        <TextView
+            android:text="手机号登录"
+            android:id="@+id/text_title"
+            android:textSize="21sp"
+            android:textColor="#ff0000"
+            android:gravity="center"
+            android:background="@xml/shape"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="返回"
+            android:textColor="#ff0000"
+            android:background="@xml/shape"
+            android:gravity="center"
+            android:onClick="onClick"
+
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="#ffffff"
+            android:inputType="phone"
+            android:hint="请输入电话号"
+            android:theme="@xml/shape"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:inputType="textPassword"
+            android:hint="请输入密码"
+            android:theme="@xml/shape"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_height="wrap_content"
+        android:background="@xml/shape"
+        android:text="登录"
+        android:textSize="18sp"
+        android:textColor="#ff0000"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:layout_width="300dp"/>
+</LinearLayout>
