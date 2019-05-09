@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+
+        <ImageView
+            android:id="@+id/simple_cover_Iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/linearLayout"
+
+            android:src="@mipmap/default_image" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/simple_cover_Iv"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/simple_cover_Iv"
+            android:id="@+id/linearLayout">
+            //创建歌曲名布局代码
+            <TextView
+                android:id="@+id/simple_name_Tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Something just like this" />
+            //创建歌曲专辑及作者名代码
+            <TextView
+                android:id="@+id/simple_edit_Tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Cold Player/The Chainsmokers" />
+        </LinearLayout>
+        //创建“更多选项”图片
+
+        <ImageView
+            android:id="@+id/simple_more_iv"
+            android:layout_width="20dp"
+            app:layout_constraintLeft_toRightOf="@id/linearLayout"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/icon_more" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>
