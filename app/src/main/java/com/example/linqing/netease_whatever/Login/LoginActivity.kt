@@ -1,17 +1,16 @@
-package com.example.linqing.netease_whatever.View
+package com.example.linqing.netease_whatever.Login
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.example.linqing.netease_whatever.Model.Share
-import com.example.linqing.netease_whatever.Model.Status
+import com.example.linqing.netease_whatever.Sevice.Share
+import com.example.linqing.netease_whatever.Sevice.Status
 import com.example.linqing.netease_whatever.R
-import com.example.linqing.netease_whatever.Service.LoginService
-import com.example.linqing.netease_whatever.Service.MainService
+import com.example.linqing.netease_whatever.Sevice.FuncService
+import com.example.linqing.netease_whatever.PlayList.MainActivity
 import kotlinx.android.synthetic.main.login_two.*
-import kotlinx.coroutines.android.UI
-import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 
 
@@ -22,24 +21,29 @@ class LoginActivity : AppCompatActivity(){
         supportActionBar?.hide()
         setContentView(R.layout.login_two)
 
+        //想修一下弹窗效果，以后再补充8
+        val builder = AlertDialog.Builder(this)
+
         back_button.setOnClickListener(){
             finish()
         }
+
+
         login_button.setOnClickListener() {
 
 
             if (phoneNumber.text.toString() == "") {
-                Toast.makeText(this, "你不填电话号怎么登陆？嗯？", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "我可以拥有你的手机号🐎", Toast.LENGTH_SHORT).show()
             }
 
             else {
-                LoginService.login(phoneNumber.text.toString(), passwordInput.text.toString()) { status, data ->
+                FuncService.login(phoneNumber.text.toString(), passwordInput.text.toString()) { status, data ->
                     runOnUiThread {
 
 
                         when (status) {
                             Status.SUCCESSFUL -> {
-                                Toast.makeText(this, "登陆成功了，真是可喜可贺，可喜可贺${data!!.profile?.nickname}", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "${data!!.profile?.nickname}登陆成功了，真是可喜可贺，可喜可贺", Toast.LENGTH_SHORT).show()
                                 val share = getSharedPreferences("data", Context.MODE_PRIVATE)
                                 Share.userInfo(
                                         share,
@@ -65,7 +69,7 @@ class LoginActivity : AppCompatActivity(){
 
                             Status.OTHER -> Toast.makeText(
                                     this,
-                                    "唔，似乎发生了什么问题，一定不是开发者的错！（确信）",
+                                    "似乎发生了什么问题，一定不是开发者的错！（确信）",
                                     Toast.LENGTH_SHORT
                             ).show()
                         }

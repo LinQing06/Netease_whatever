@@ -1,7 +1,7 @@
-package com.example.linqing.netease_whatever.Model
+package com.example.linqing.netease_whatever.Sevice
 
 import android.content.SharedPreferences
-import com.example.linqing.netease_whatever.Model.Bean.LoginBean
+import com.example.linqing.netease_whatever.Login.LoginBean
 
 object Share {
 

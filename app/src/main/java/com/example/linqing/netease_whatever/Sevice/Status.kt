@@ -1,4 +1,4 @@
-package com.example.linqing.netease_whatever.Model
+package com.example.linqing.netease_whatever.Sevice
 
 enum class Status {
     SUCCESSFUL,

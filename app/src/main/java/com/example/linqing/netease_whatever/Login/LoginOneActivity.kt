@@ -1,8 +1,8 @@
-package com.example.linqing.netease_whatever.View
+package com.example.linqing.netease_whatever.Login
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import com.example.linqing.netease_whatever.Login.LoginActivity
 import com.example.linqing.netease_whatever.R
 import kotlinx.android.synthetic.main.login_one.*
 import org.jetbrains.anko.startActivity

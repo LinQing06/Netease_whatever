@@ -29,22 +29,23 @@
             android:layout_marginLeft="5dp"
             app:layout_constraintLeft_toRightOf="@id/simple_cover_Iv"
             android:id="@+id/linearLayout">
-            //创建歌曲名布局代码
+
             <TextView
                 android:id="@+id/simple_name_Tv"
+                android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:text="Something just like this" />
-            //创建歌曲专辑及作者名代码
+
             <TextView
                 android:id="@+id/simple_edit_Tv"
+                android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Cold Player/The Chainsmokers" />
         </LinearLayout>
-        //创建“更多选项”图片
 
         <ImageView
             android:id="@+id/simple_more_iv"
@@ -53,6 +54,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginRight="10dp"
+            android:layout_marginLeft="115dp"
             android:src="@mipmap/icon_more" />
 
     </android.support.constraint.ConstraintLayout>
