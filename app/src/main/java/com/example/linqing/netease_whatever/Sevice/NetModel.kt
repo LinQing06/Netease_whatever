@@ -8,10 +8,10 @@ import java.util.concurrent.TimeUnit
 
 object NetModel {
 
-   private const val BASE_URL = "http://172.23.117.230:3000/"
+   private const val BASE_URL = "http://192.168.1.2:3000/"
     private val client = OkHttpClient
             .Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(6, TimeUnit.SECONDS)
             .build()
 
 

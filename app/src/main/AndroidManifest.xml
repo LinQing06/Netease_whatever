@@ -23,16 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayList.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".PlayList.MainActivity"></activity>
         <activity android:name=".Login.LoginActivity"></activity>
-    <activity android:name=".ListDetail.PlaylistDetailActivity"></activity>
-    <activity android:name=".Music.MusicActivity"></activity>
+        <activity android:name=".ListDetail.PlaylistDetailActivity"></activity>
+        <activity android:name=".Music.MusicActivity"></activity>
 
         <meta-data
             android:name="com.google.android.actions"

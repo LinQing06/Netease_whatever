@@ -12,7 +12,7 @@ object Share {
                 .putInt("gender", i.profile?.gender ?: 0)
                 .putString("phoneNumber", ph)
                 .putString("password", pwd)
-                .putInt("id", i.account?.id ?: 0)
+                .putInt("uid", i.account?.id ?: 0)
                 .putString("background_url", i.profile?.backgroundUrl).apply()
     }
 }

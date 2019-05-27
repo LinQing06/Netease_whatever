@@ -15,13 +15,12 @@ interface MainService{
 
     fun getLogin(@Query("phone") phoneNum: String, @Query("password") passWord: String): Call<LoginBean>
 
-    @GET("/logout")
+   // @GET("/logout")
+   // fun logout(): Call<ResponseBody>
 
-    fun logout(): Call<ResponseBody>
 
-
-    @GET("/user/playlist?")
-    fun getListData(@Query("listId") listId: Int?): Call<MyPLaylistBean>
+    @GET("/user/playlist")
+    fun getListData(@Query("uid") uid: Int?): Call<MyPLaylistBean>
 
 
     @GET("/playlist/detail?")

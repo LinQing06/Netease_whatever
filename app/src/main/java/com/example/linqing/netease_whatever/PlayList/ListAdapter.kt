@@ -2,8 +2,6 @@ package com.example.linqing.netease_whatever.PlayList
 
 import android.content.Context
 import android.content.Intent
-import android.provider.ContactsContract
-import android.support.constraint.R.id.parent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +11,11 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.linqing.netease_whatever.ListDetail.PlaylistDetailActivity
 import com.example.linqing.netease_whatever.R
-import kotlinx.android.synthetic.main.list_item.view.*
+
 
 class ListAdapter(internal var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //data
-    private var list: ArrayList<Playlist> = ArrayList()
+    private var list: ArrayList<Playlist?> = ArrayList()
     private var listCount = 0
     private var TITLE = 0
     private var nickname = ""
@@ -50,29 +48,28 @@ class ListAdapter(internal var context: Context) : RecyclerView.Adapter<Recycler
             }
 
         } else if (holder is MyViewHolder) {
-            //这里不晓得有没有问题总之先打个备注
-            getData(list, nickname)
 
-            holder.textView.text = list[position].name
+            holder.textView.text = list[position]?.name
 
             Glide.with(context)
-                    .load(list[position].coverImgUrl)//load(url)
+                    .load(list[position]?.coverImgUrl)//load(url)
                     .into(holder.imageView)
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, PlaylistDetailActivity::class.java)
-                intent.putExtra("id", list[holder.adapterPosition].id)
+                intent.putExtra("id", list[holder.adapterPosition]?.id)
+
                 context.startActivity(intent)
 
             }
             //歌单条目不一样时othertext的小小区别
 
-            var otherText = "${list[position].trackCount}首"
-            if (list[position].creator.nickname != nickname) {
-                otherText = "${list[position].trackCount}首 by ${list[position].creator.nickname}"
+            var otherText = "${list[position]?.trackCount}首"
+            if (list[position]?.creator?.nickname != nickname) {
+                otherText = "${list[position]?.trackCount}首 by ${list[position]?.creator?.nickname}"
             }
             holder.otherText.text = otherText
-            holder.id = list[position].id.toString()
+            holder.id = list[position]?.id.toString()
 
 
         }
@@ -92,26 +89,25 @@ class ListAdapter(internal var context: Context) : RecyclerView.Adapter<Recycler
             return ALBUM_TYPE
     }
 
-    fun getData(list: ArrayList<Playlist>, nickname: String) {
-        this.list = list.toMutableList() as ArrayList<Playlist>
+    fun getData(list: ArrayList<Playlist?>, nickname: String) {
+        this.list = list.toMutableList() as ArrayList<Playlist?>
+        this.nickname=nickname
+        this.itembean=itembean
         list.forEach {
-            if (it.creator.nickname == nickname) {
-                listCount++
+            if (it != null) {
+                if (it.creator.nickname == nickname) {
+                    listCount++
+                }
             }
-
         }
 
-        this.nickname = nickname
+        this.list.add(0,null)
+
 
         notifyDataSetChanged()
 
     }
 
-    fun update(itemdata:Playlist) {
-        this.itembean=itemdata
-        list.add(itemdata)
-        notifyDataSetChanged()
-    }
 
 
     inner class MyViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {

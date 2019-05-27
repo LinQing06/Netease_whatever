@@ -13,7 +13,7 @@
         android:id="@+id/title_list_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="23dp"
         android:paddingLeft="25dp"
         android:text="创建的歌单"/>
     <ImageView

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:networkSecurityConfig="@xml/network_security_config"
-    android:background="@drawable/login_teo_picture"
+    android:background="@drawable/bgd_two_test"
     >
 
     <RelativeLayout

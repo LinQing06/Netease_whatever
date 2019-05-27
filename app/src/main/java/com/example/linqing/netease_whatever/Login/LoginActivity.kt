@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.example.linqing.netease_whatever.Sevice.Share
 import com.example.linqing.netease_whatever.Sevice.Status
 import com.example.linqing.netease_whatever.R
-import com.example.linqing.netease_whatever.Sevice.FuncService
 import com.example.linqing.netease_whatever.PlayList.MainActivity
 import kotlinx.android.synthetic.main.login_two.*
 import org.jetbrains.anko.startActivity
@@ -37,13 +36,13 @@ class LoginActivity : AppCompatActivity(){
             }
 
             else {
-                FuncService.login(phoneNumber.text.toString(), passwordInput.text.toString()) { status, data ->
+                LoginService.login(phoneNumber.text.toString(), passwordInput.text.toString()) { status, data ->
                     runOnUiThread {
 
 
                         when (status) {
                             Status.SUCCESSFUL -> {
-                                Toast.makeText(this, "${data!!.profile?.nickname}登陆成功了，真是可喜可贺，可喜可贺", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "恭喜${data!!.profile?.nickname}同学登陆成功，掌声祝福", Toast.LENGTH_SHORT).show()
                                 val share = getSharedPreferences("data", Context.MODE_PRIVATE)
                                 Share.userInfo(
                                         share,
@@ -53,7 +52,7 @@ class LoginActivity : AppCompatActivity(){
                                 )
 
 
-                                startActivity<MainActivity>()
+                                startActivity<MainActivity>("nickname" to data.profile?.nickname,"uid" to data.account.id)
 
 
                                 finish()
@@ -62,14 +61,14 @@ class LoginActivity : AppCompatActivity(){
 
                             Status.WRONG -> Toast.makeText(
                                     this,
-                                    "密码错了喔baby",
+                                    "密码错了（— —'）",
                                     Toast.LENGTH_SHORT
                             ).show()
 
 
                             Status.OTHER -> Toast.makeText(
                                     this,
-                                    "似乎发生了什么问题，一定不是开发者的错！（确信）",
+                                    "不管是什么错总之我先道个歉",
                                     Toast.LENGTH_SHORT
                             ).show()
                         }
