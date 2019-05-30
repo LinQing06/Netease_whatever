@@ -35,7 +35,7 @@ data class Playlist(
     val creator: Creator,
     val description: String,
     val highQuality: Boolean,
-    val id: Int,
+    val id: String,//java.lang.NumberFormatException，JsonSyntaxException
     val name: String,
     val newImported: Boolean,
     val ordered: Boolean,
@@ -90,9 +90,9 @@ data class Creator(
 
 data class Track(
     val a: Any,
-    val al: Al,
+    val al: Al,//专辑id+专辑名字+图片url
     val alia: List<Any>,
-    val ar: List<Ar>,
+    val ar: List<Ar>,//作者id+author名字
     val cd: String,
     val cf: String,
     val copyright: Int,
@@ -103,12 +103,12 @@ data class Track(
     val fee: Int,
     val ftype: Int,
     val h: H,
-    val id: Int,
+    val id: String,//这个应该是歌曲的id//改一改
     val l: L,
     val m: M,
     val mst: Int,
     val mv: Int,
-    val name: String,
+    val name: String,//歌曲名字
     val no: Int,
     val pop: Int,
     val pst: Int,
@@ -129,17 +129,17 @@ data class M(
     val br: Int,
     val fid: Int,
     val size: Int,
-    val vd: Int
+    val vd: Float
 )
 
 data class H(
     val br: Int,
     val fid: Int,
     val size: Int,
-    val vd: Int
+    val vd: Float
 )
 
-data class Al(
+data class Al(//专辑信息
     val id: Int,
     val name: String,
     val pic: Long,
@@ -147,7 +147,7 @@ data class Al(
     val tns: List<String>
 )
 
-data class Ar(
+data class Ar(//作者信息
     val alias: List<Any>,
     val id: Int,
     val name: String,
@@ -158,7 +158,7 @@ data class L(
     val br: Int,
     val fid: Int,
     val size: Int,
-    val vd: Int
+    val vd: Float
 )
 
 data class TrackId(

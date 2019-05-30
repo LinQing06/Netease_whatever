@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
+import com.example.linqing.netease_whatever.ListDetail.DetailService.getListDetailData
 
 import com.example.linqing.netease_whatever.R
 import com.example.linqing.netease_whatever.Sevice.Status
@@ -15,24 +16,25 @@ class PlaylistDetailActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ListDetailAdapter
-    private lateinit var list:ArrayList<Playlist?>
-    internal var id = 0
+    private lateinit var list:ArrayList<Track?>
+    internal var id = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_main)
 
-        var intent = Intent()
-        id = intent.getIntExtra("id", 0)
-        recyclerView=findViewById(R.id.detail_recy)
+        var intent = intent
+        id = intent.getStringExtra("id")
         getInfo()
 
 
     }
+
     private fun init() {
         val linearLayout = LinearLayoutManager(this)
         linearLayout.orientation = LinearLayoutManager.VERTICAL
         adapter = ListDetailAdapter(this)
+        recyclerView = findViewById(R.id.info_recy)
         recyclerView.layoutManager = linearLayout
         recyclerView.adapter = adapter
 
@@ -45,13 +47,13 @@ class PlaylistDetailActivity : AppCompatActivity() {
                 when (status) {
                     Status.SUCCESSFUL -> {
                         init()
-                        //list=ArrayList(data!!.playlist)
+                        list=ArrayList(data?.playlist?.tracks)
                         updateInfo()
 
                     }
                     Status.WRONG -> Toast.makeText(
                             this,
-                            "未知错误嗷",
+                            "猜猜是谁又出错了呢（）",
                             Toast.LENGTH_SHORT
                     ).show()
 
@@ -71,7 +73,8 @@ class PlaylistDetailActivity : AppCompatActivity() {
 
     }
 
-    private fun updateInfo(){
+    private fun updateInfo() {
+        adapter.getInfo(list)
 
 
     }
